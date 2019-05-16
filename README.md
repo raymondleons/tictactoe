@@ -6,8 +6,6 @@ You can do online test in my Heroku [here](#)
 ```sh
 $ git clone 'repo-name'
 $ cd 'repo-name'
-$ npm install or yarn install
-$ npm run start or yarn start
 ```
 ### Tech
 
