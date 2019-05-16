@@ -1,5 +1,5 @@
 # Tictactoe Games
-You can do online test in my Heroku [here](http://reddit-clone-demo.herokuapp.com/)
+You can do online test in my Heroku [here](#)
 
 ### Installation
 
