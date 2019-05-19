@@ -31,11 +31,8 @@ var b3;
 var c1;
 var c2;
 var c3;
-var d1;
-var d2;
-var d3;
 
-var arrayId = ["11", "12", "13", "21", "22", "23", "31", "32", "33", "41", "42", "43"];
+var arrayId = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
 
 // ===================all the functions below================================
 
@@ -120,6 +117,19 @@ $(document).ready(function() {
     $("#tokenPair2").removeClass("selected");
     saveGame();
   });
+  // change token to X/O, and change background
+  // color to indicate it's been selected
+
+  $("#tokenPair2").on("click", function() {
+    if (turns) {
+      return;
+    }
+    gameData.token1 = "nigiri";
+    gameData.token2 = "onigiri";
+    $(this).addClass("selected");
+    $("#tokenPair1").removeClass("selected");
+    saveGame();
+  }); // change token to nigiri/onigiri
 
 //===================================toggle 3x3 or 4x4 game board============================
   // $("#grid4").hide();
@@ -142,7 +152,8 @@ $(document).ready(function() {
     saveGame();
     return false;
   }); // toggle board size
-//===================================toggle 3x3, 4x4 and 5x5 game board============================
+
+//===================================toggle 3x3 or 4x4 game board============================
   // $("#grid5").hide();
   $("#changeSize").click(function() {
     if (modeAI) {
@@ -162,7 +173,7 @@ $(document).ready(function() {
     toggle = !toggle;
     saveGame();
     return false;
-  }); // toggle board size
+  }); // toggle board size  
 //================================toggle AI mode=================================================
   $("#toggleAI").click(function() {
     if (turns) {
@@ -331,9 +342,7 @@ $(document).ready(function() {
           compMove3();
         } else if (turns === 7) {
           compMove4();
-        } else if (turns === 7) {
-          compMove5();
-        }  
+        }
 
         if ( checkWin(gameData.movesAI, size) ) {
           $("#message").text("Computer wins!")
@@ -442,9 +451,9 @@ $(document).ready(function() {
       return false;
     } // works for 4x4 grid
 
-      if (size === 5) {
-        for (var i = 0; i < row.length; i++) {
-          if (row[i] === row[i+1] && row[i] === row[i+2] && row[i] === row[i+3] && row[i] === row[i+4])
+    if (size === 5) {
+      for (var i = 0; i < row.length; i++) {
+        if (row[i] === row[i+1] && row[i] === row[i+2] && row[i] === row[i+3] && row[i] === row[i+4]) {
           return true;
         }
       }
@@ -455,8 +464,9 @@ $(document).ready(function() {
         }
       }
       return false;
-    } // work for 5x5 grid
+    } // works for 5x5 grid
 
+  };
 
   //=====================================total check to win function===============================
   //=====================================take size (3 or 4) as an argument===============================
@@ -564,12 +574,6 @@ $(document).ready(function() {
   var compMove4 = function() {
     compMove3();
   }; // 4th computer move
-
-//=======================Computer's 4th move===============================================
-
-var compMove5 = function() {
-  compMove3();
-}; // 4th computer move  
 
 //=======================block: in every possible directions, there are 2 "x"===============================================
 //=======================win: in every possible directions, there are 2 "o"===============================================
