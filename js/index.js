@@ -152,28 +152,6 @@ $(document).ready(function() {
     saveGame();
     return false;
   }); // toggle board size
-
-//===================================toggle 3x3 or 4x4 game board============================
-  // $("#grid5").hide();
-  $("#changeSize").click(function() {
-    if (modeAI) {
-      return;
-    }
-    $("#grid5").slideToggle("fast");
-    $("#grid4").slideToggle("fast");
-    restart();
-
-    if (toggle) {
-      size = 5;
-      $("#toggleAI").hide(); // NO AI opponent for 4x4 grid
-    } else {
-      size = 4;
-      $("#toggleAI").show();
-    }
-    toggle = !toggle;
-    saveGame();
-    return false;
-  }); // toggle board size  
 //================================toggle AI mode=================================================
   $("#toggleAI").click(function() {
     if (turns) {
@@ -450,21 +428,6 @@ $(document).ready(function() {
       }
       return false;
     } // works for 4x4 grid
-
-    if (size === 5) {
-      for (var i = 0; i < row.length; i++) {
-        if (row[i] === row[i+1] && row[i] === row[i+2] && row[i] === row[i+3] && row[i] === row[i+4]) {
-          return true;
-        }
-      }
-
-      for (var i = 0; i < col.length; i++) {
-        if (col[i] === col[i+1] && col[i] === col[i+2] && col[i] === col[i+3] && row[i] === row[i+4]) {
-          return true;
-        }
-      }
-      return false;
-    } // works for 5x5 grid
 
   };
 
