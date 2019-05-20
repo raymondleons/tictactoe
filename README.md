@@ -9,7 +9,7 @@ $ cd 'repo-name'
 ```
 ### Tech
 
-This repo uses a number of open source projects to work properly::
+This repo uses a number of open source projects to work properly :
 
 * [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
@@ -24,4 +24,10 @@ repo-name/
   js/
     index.js
 ````    
-    
+### Features 
+- Players can toggle between 3x3 or 4x4 grid (scalable game)
+- The game has to play with two people (not computer)
+- Use Local Storage (if the game feels error, please clear the cache in your browser)
+
+### Optimize The Code
+[Web optimize](https://i.imgur.com/sWWAYHO.png)
