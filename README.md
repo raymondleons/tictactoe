@@ -30,4 +30,4 @@ repo-name/
 - Use Local Storage (if the game feels error, please clear the cache in your browser)
 
 ### Optimize The Code
-[Imgur](https://i.imgur.com/Z3g1BkW.png)
+![Optimize](https://i.imgur.com/Z3g1BkW.png)
