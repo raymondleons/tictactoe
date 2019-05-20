@@ -30,4 +30,10 @@ repo-name/
 - Use Local Storage (if the game feels error, please clear the cache in your browser)
 
 ### Optimize The Code
+  - Gtmetrix Test
 ![Optimize](https://i.imgur.com/Z3g1BkW.png)
+
+  - PageSpeed Insights from Google
+ ![GoogleOptimize](https://i.imgur.com/EHRYnVa.png)
+ 
+I've done optimize on this website so that it makes it faster to access. The results of this web trial that I've done you can see above
