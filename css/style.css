@@ -144,19 +144,108 @@ footer a {
   color: #F3E8EE;
 }
 
-
-/* responsive */
-
-@media screen and (max-width: 425px) {
-  h1 {
-    font-size: 18px;
-    margin-left: -50px;
-  }
+.navbar {
+  overflow: hidden;
+  background-color: rgb(219, 227, 255);
+  height: -1px;
 }
 
-@media screen and (max-width: 630px) {
-  h1 {
-    font-size: 20px;
-    margin-left: -50px;
-  }
+#main-nav {
+  list-style-type: none;
+  display: none;
+  flex-direction: column;
 }
+
+#main-nav li {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.nav-links,
+#logo {
+  text-decoration: none;
+  color: #61C9A8;
+}
+
+#changeSize {
+  color: #49074C;
+  padding: 12px
+}
+
+#newgame {
+  background-color: #61C9A8;
+  font-size: 16px;
+  color: #49074C;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+#newgame:hover {
+  color: white;
+}
+
+#changeSize:hover {
+  color: white;
+  background-color: #49074C;
+  padding: 14px;
+}
+
+#logo:hover,
+.nav-links:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+#logo {
+  display: inline-block;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-left: 100px;
+}
+
+#navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+
+#navbar-toggle:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+@media screen and (min-width: 768px) {
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0px;
+    align-items: center;
+    height: 48px;
+  }
+
+  #main-nav {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  #main-nav li {
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-left: 10px;
+  }
+
+  #logo {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  #navbar-toggle {
+    display: none;
+  }
+} 
