@@ -1,7 +1,7 @@
 
 var gameData = {
   movesP1: [],
-  movesP2: [], // store the square id to an array
+  movesP2: [], // store the square id to an array 
   movesAI: [],
   token1: 'x',
   token2: 'o',
@@ -53,11 +53,6 @@ $(document).ready(function() {
         $(".name").toggle();
       }
 
-      if(gameData.token1 === 'nigiri') {
-        $("#tokenPair1").removeClass("selected");
-        $("#tokenPair2").addClass("selected");
-      }
-
       for (var i = 0; i < gameData.movesP1.length; i++) {
         $("#"+gameData.movesP1[i]).addClass(gameData.token1);
       }
@@ -106,30 +101,6 @@ $(document).ready(function() {
     restart();
     saveGame();
   }); // START button click event, reset game
-
-  $("#tokenPair1").on("click", function() {
-    if (turns) {
-      return;
-    }
-    gameData.token1 = "x";
-    gameData.token2 = "o";
-    $(this).addClass("selected");
-    $("#tokenPair2").removeClass("selected");
-    saveGame();
-  });
-  // change token to X/O, and change background
-  // color to indicate it's been selected
-
-  $("#tokenPair2").on("click", function() {
-    if (turns) {
-      return;
-    }
-    gameData.token1 = "nigiri";
-    gameData.token2 = "onigiri";
-    $(this).addClass("selected");
-    $("#tokenPair1").removeClass("selected");
-    saveGame();
-  }); // change token to nigiri/onigiri
 
 //===================================toggle 3x3 or 4x4 game board============================
   // $("#grid4").hide();
@@ -198,9 +169,7 @@ $(document).ready(function() {
 
       // first see which turn
       if (turns % 2 === 0) {
-        // $("#player1 .name").addClass("changecolor");
-        // $("#player2 .name").removeClass("changecolor");
-
+        
         $("#message").text("It's Player1's turn!"); // change the prompt message
 
         marked.addClass(token1).addClass("animated bounceIn"); // place the token "X"
@@ -305,8 +274,7 @@ $(document).ready(function() {
             saveGame();
             return;
           } // players reach the last turn and not winning, it's a draw
-          // $("#player2 .name").addClass("changecolor");
-          // $("#player1 .name").removeClass("changecolor"); // change color to indicate current player
+          
           $("#message").text("It's Player2's turn!")
           saveGame();
           //normally switch to player O and change prompt message
