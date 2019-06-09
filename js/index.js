@@ -13,7 +13,7 @@ var isOver = false; // see whether game is ended
 var size = 3; //3x3 grid default
 var turns = 0;
 var toggle = true;
-var modeAI = false; // default AI mode off
+var mode = false; 
 
 var compMoves;
 var boardCheck;
@@ -43,12 +43,11 @@ $(document).ready(function() {
     if(localStorage.gameData !== undefined) {
       gameData = JSON.parse(localStorage.getItem('gameData'));
       turns = JSON.parse(localStorage.getItem('turns'));
-      isOver = JSON.parse(localStorage.getItem('isOver'));
+      isOver = JSON.parse(localStorage.getItem('isOver')); 
       size = JSON.parse(localStorage.getItem('size'));
-      modeAI = JSON.parse(localStorage.getItem('modeAI'));
       toggle = JSON.parse(localStorage.getItem('toggle'));
 
-      if(modeAI) {
+      if(mode) {
         $(".icon").toggle();
         $(".name").toggle();
       }
@@ -79,13 +78,8 @@ $(document).ready(function() {
     localStorage.setItem('turns', JSON.stringify(turns));
     localStorage.setItem('isOver', JSON.stringify(isOver));
     localStorage.setItem('size', JSON.stringify(size));
-    localStorage.setItem('modeAI', JSON.stringify(modeAI));
     localStorage.setItem('toggle', JSON.stringify(toggle));
-  };
-
-  window.setTimeout(function () {
-    $('#message').removeClass('fadeInUp');
-  }, 1000); // remove animation so it won't affect submenu
+  }; // this for save game into local storage
 
   var restart = function() {
     gameData.movesP1 = [];
@@ -105,7 +99,7 @@ $(document).ready(function() {
 //===================================toggle 3x3 or 4x4 game board============================
   // $("#grid4").hide();
   $("#changeSize").click(function() {
-    if (modeAI) {
+    if (mode) {
       return;
     }
     $("#grid4").slideToggle("fast");
@@ -135,21 +129,21 @@ $(document).ready(function() {
     gameData.score2 = 0;
     $("#player2 .num").text('' + gameData.score2);
 
-    modeAI = !modeAI;
+    mode = !mode;
     saveGame();
   });
 
-  $("#newgame").on("click", function() {
+  $("#newgame").on("click", function() { // make refresh game
     gameData.score1 = 0;
     gameData.score2 = 0;
     restart();
     saveGame();
   });
-    // if (!modeAI) {
+    // if (!mode) {
     // when player clicks squares to play!!!!
     $("td").on("click", function() {
 
-      if(modeAI === true){
+      if(mode === true){
         return;
       }
       if (isOver) {
@@ -170,7 +164,7 @@ $(document).ready(function() {
       // first see which turn
       if (turns % 2 === 0) {
         
-        $("#message").text("It's Player1's turn!"); // change the prompt message
+        $("#message").text("It's Player 1's turn!"); // change the prompt message
 
         marked.addClass(token1).addClass("animated bounceIn"); // place the token "X"
         gameData.movesP1.push(this.id); // store the sqaure id to an array
@@ -178,7 +172,7 @@ $(document).ready(function() {
         turns++; //player2's turn
 
         if ( checkWin(gameData.movesP1, size) ) {
-          $("#message").text("Player1 wins!")
+          $("#message").text("Player 1 wins!")
           isOver = true; // game is ended
           gameData.score1 += 1;
           $("#player1 .num").text('' + gameData.score1);
@@ -193,7 +187,7 @@ $(document).ready(function() {
             return;
           } // players reach the last turn and not winning, it's a draw
 
-          $("#message").text("It's Player2's turn!")
+          $("#message").text("It's Player 2's turn!")
           saveGame();
           //normally switch to player O and change prompt message
         }
@@ -206,7 +200,7 @@ $(document).ready(function() {
         turns++;
 
         if ( checkWin(gameData.movesP2, size) ) {
-          $("#message").text("Player2 wins!")
+          $("#message").text("Player 2 wins!")
           isOver = true;
           gameData.score2 += 1;
           $("#player2 .num").text('' + gameData.score2);
@@ -221,17 +215,17 @@ $(document).ready(function() {
             return;
           }
 
-          $("#message").text("It's Player1's turn!")
+          $("#message").text("It's Player 1's turn!")
           saveGame();
         }
       }
 
-    }); // all the moves ---> not AI mode
+    }); // all the moves 
 
-  //==================================AI mode on======================================
-    // all the moves ---> AI mode
+  //================================== mode on======================================
+    // all the moves 
     $("td").on("click", function() {
-      if (modeAI === false) {
+      if (mode === false) {
         return;
       }
       if (isOver) {
