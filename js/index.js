@@ -2,11 +2,10 @@
 var gameData = {
   movesP1: [],
   movesP2: [], // store the square id to an array 
-  movesAI: [],
   token1: 'x',
   token2: 'o',
-  score1: 0,
-  score2: 0
+  score1: 0, // score for player 1
+  score2: 0 // score for playe 2
 }; // store game data
 
 var isOver = false; // see whether game is ended
@@ -60,10 +59,6 @@ $(document).ready(function() {
         $("#"+gameData.movesP2[i]).addClass(gameData.token2);
       }
 
-      for (var i = 0; i < gameData.movesAI.length; i++) {
-        $("#"+gameData.movesAI[i]).addClass(gameData.token2);
-      }
-
       $("#player1 .num").text('' + gameData.score1);
       $("#player2 .num").text('' + gameData.score2);
 
@@ -84,7 +79,6 @@ $(document).ready(function() {
   var restart = function() {
     gameData.movesP1 = [];
     gameData.movesP2 = [];
-    gameData.movesAI = [];
     turns = 0;
     isOver = false;
     $("td").removeClass(gameData.token1).removeClass(gameData.token2);
@@ -406,8 +400,6 @@ $(document).ready(function() {
     return false;
   };
 
-  //==========================below is AI logic!!!!!!!==================================
-  //==========================below is AI logic!!!!!!!==================================
   //==========================below is AI logic!!!!!!!==================================
 
   var compMove1 = function() {
