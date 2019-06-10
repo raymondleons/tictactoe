@@ -102,7 +102,7 @@ $(document).ready(function() {
 
     if (toggle) {
       size = 4;
-      $("#toggleAI").hide(); // NO AI opponent for 4x4 grid
+      $("#toggleAI").hide(); 
     } else {
       size = 3;
       $("#toggleAI").show();
@@ -111,7 +111,7 @@ $(document).ready(function() {
     saveGame();
     return false;
   }); // toggle board size
-//================================toggle AI mode=================================================
+//================================toggle  mode=================================================
   $("#toggleAI").click(function() {
     if (turns) {
       return;
@@ -299,13 +299,13 @@ $(document).ready(function() {
         }
 
     }
-  });// all the moves --->AI mode, function ends
+  });// all the moves --->
 // }
 
 //===========================all the check for WIN functions=============================
 
   // get 2 arrays with all the square ids on the diagonal directions
-  // eg. ["11", "22", "33", "44"] and ["14", "23", "32", "41"]
+  // eg. ["11", "22", "33"] for 3x3 grid and ["14", "23", "32", "41"] for 4x4 grid
   // pattern here is seperate first number and second number, reverse the array with second numbers
   var diagArr = function(size, booleanNum) {
       var row = [];
@@ -342,8 +342,8 @@ $(document).ready(function() {
 
   // seperate row ids and column ids, and check if the player's selected squares have 3
   // same row ids or column ids.
-  // to check whether it's winning horizontally or vertically
-  var checkOther = function(playerMoves, size) { //check horizontally and vertically
+  // to check whether it's winning horizontally, diagonal or vertically
+  var checkOther = function(playerMoves, size) { //check horizontally, diagonal and vertically
     var row = [];
     var col = [];
 
@@ -400,7 +400,7 @@ $(document).ready(function() {
     return false;
   };
 
-  //==========================below is AI logic!!!!!!!==================================
+  //==========================below is logic!!!!!!!==================================
 
   var compMove1 = function() {
 
@@ -414,9 +414,9 @@ $(document).ready(function() {
       gameData.movesAI.push("13");
       turns++;
     }
-  }; // 1st computer move
+  }; // 1st player move
 
-  //=======================Computer's 2nd move===============================================
+  //=======================Player's 2nd move===============================================
 
 
 
@@ -449,7 +449,7 @@ $(document).ready(function() {
       gameData.movesAI.push(id);
       turns++;
     }
-  }; // 2nd computer move
+  }; // 2nd player move
 
 //===================get an array with true of false to indicate whether it's an empty suqare or not=============
   var getEmpty = function(){
@@ -463,7 +463,7 @@ $(document).ready(function() {
     }
   };
 
-  //=======================Computer's 3rd move===============================================
+  //=======================Player's 3rd move===============================================
 
   var compMove3 = function() {
     var win = blockOrWin(gameData.token2);
@@ -485,12 +485,12 @@ $(document).ready(function() {
       turns++;
     }
 
-  }; // 3rd computer move
-//=======================Computer's 4th move===============================================
+  }; // 3rd player move
+//=======================Player's 4th move===============================================
 
   var compMove4 = function() {
     compMove3();
-  }; // 4th computer move
+  }; // 4th player move
 
 //=======================block: in every possible directions, there are 2 "x"===============================================
 //=======================win: in every possible directions, there are 2 "o"===============================================
@@ -535,7 +535,7 @@ $(document).ready(function() {
     return [a1, a2, a3, b1, b2, b3, c1, c2, c3];
   };
 
-///==================get the first empty square to fill an AI move===================================
+///==================get the first empty square to fill an mode move===================================
   var checkEmpty = function() {
     var boardX = boardCheck(gameData.token1);
     var boardO = boardCheck(gameData.token2);
